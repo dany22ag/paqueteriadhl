@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pedidos DHL</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f2f5; transition: background-color 0.3s ease; }
+        .container { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); width: 100%; max-width: 800px; text-align: center; margin: 50px auto; }
+        .banner { width: 100%; max-width: 500px; height: auto; border-radius: 8px; margin-bottom: 20px; }
+        .nav { display: flex; background-color: #ffcc00; padding: 10px; border-radius: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+        .nav a { text-decoration: none; color: #000; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease; flex: 1 1 auto; text-align: center; }
+        .nav a:hover { background-color: #d40511; color: #fff; }
+        .hidden { display: none; }
+        .content-section { display: none; padding: 20px; background-color: #e3f2fd; border-radius: 8px; margin-top: 20px; opacity: 0; transform: translateY(-10px); transition: opacity 0.5s, transform 0.5s; }
+        .content-section.active { display: block; opacity: 1; transform: translateY(0); }
+        .dark-mode { background-color: #2b2b2b; color: #fff; }
+    </style>
+</head>
+<body id="body">
+    <div class="container" id="login-container">
+        <img src="DHL.jpeg" class="banner">
+        <h4>Bienvenido</h4>
+        <button onclick="showLogin()">Iniciar Sesión</button>
+        <button onclick="showRegister()">Registrarse</button>
+    </div>
+    <div class="container hidden" id="main-container">
+        <img src="DHL.jpeg" class="banner">
+        <div class="nav">
+            <a onclick="showContent('inicio')">Inicio</a>
+            <a onclick="showContent('registro')">Registrar Pedido</a>
+            <a onclick="showContent('seguimiento')">Seguimiento de Envíos</a>
+            <a onclick="showContent('servicios')">Servicios</a>
+            <a onclick="showContent('contacto')">Contacto</a>
+            <a onclick="showContent('faq')">Preguntas Frecuentes</a>
+            <a onclick="logout()">Cerrar Sesión</a>
+            <a onclick="toggleDarkMode()">Modo Oscuro</a>
+        </div>
+        <div id="inicio" class="content-section active">
+            <h1>Bienvenido a la Gestión de Pedidos DHL</h1>
+            <p>Esta plataforma le permite gestionar sus envíos de forma rápida y segura.</p>
+ <img src="PEOPLE.jpeg"style="width: 100%; max-width: 600px; border-radius: 10px; margin-top: 20px;">
+
+            <div style="margin-top: 20px;">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ptc4Awb0UpU?si=BUUhn7h242Nq3uls" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showContent(section) {
+            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(section).classList.add('active');
+        }
+        function logout() {
+            sessionStorage.clear();
+            document.getElementById('main-container').classList.add('hidden');
+            document.getElementById('login-container').classList.remove('hidden');
+        }
+        function toggleDarkMode() {
+            document.getElementById('body').classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
